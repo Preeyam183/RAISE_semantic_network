@@ -1,53 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<style>
-  /* Base Colors and Theme */
-  :root {
-    --c-pos: #97C459; --c-neg: #F09595; --c-neu: #EF9F27;
-    --color-background-primary: #1a1a1a;
-    --color-background-secondary: #111111;
-    --color-background-tertiary: #2a2a2a;
-    --color-border-primary: #444444;
-    --color-border-secondary: #333333;
-    --color-border-tertiary: #2a2a2a;
-    --color-text-primary: #f0f0f0;
-    --color-text-secondary: #b0b0b0;
-    --color-text-tertiary: #707070;
-    --border-radius-lg: 10px;
-    --border-radius-md: 6px;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  body, html { background: #111111; margin: 0; padding: 0; color: var(--color-text-primary); font-family: var(--font-sans); }
-  
-  /* Container Layout */
-  #gw { position: relative; width: 100%; height: 560px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; background: var(--color-background-secondary); }
-  #gsvg { width: 100%; height: 100%; }
-  .glink { fill: none; pointer-events: none; }
-  .gnlabel { pointer-events: none; font-family: var(--font-sans); font-weight: 500; }
-  
-  /* UI Elements */
-  #gtip { position: absolute; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 12px; line-height: 1.6; pointer-events: none; display: none; max-width: 210px; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-  #gctrls { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
-  #glgd { position: absolute; bottom: 12px; left: 12px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.8; pointer-events: none; }
-  .ld { display: flex; align-items: center; gap: 5px; }
-  .ldd { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-  .fbtn { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
-  .fbtn.act { background: var(--color-background-tertiary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
-  #gstats { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 4px; pointer-events: none; }
-  .gstat { font-size: 10px; color: var(--color-text-tertiary); line-height: 1.4; }
-  .gstat b { color: var(--color-text-secondary); font-weight: 500; }
-  #ghint { position: absolute; bottom: 12px; right: 12px; font-size: 10px; color: var(--color-text-tertiary); text-align: right; pointer-events: none; }
-</style>
+    <meta charset="UTF-8">
+    <title>AI Network Viz</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <style>
+        :root { --c-pos: #97C459; --c-neg: #F09595; --c-neu: #EF9F27; }
+        body { background: #111; color: white; font-family: sans-serif; margin: 0; overflow: hidden; }
+        #gw { width: 100vw; height: 100vh; background: #111; position: relative; }
+        .glink { stroke: #444; stroke-opacity: 0.4; }
+        .nd circle { cursor: grab; stroke: #222; stroke-width: 1.5px; }
+        .nd text { fill: #ccc; font-size: 12px; pointer-events: none; text-anchor: middle; }
+        #gctrls { position: absolute; top: 10px; right: 10px; z-index: 10; }
+        .fbtn { background: #333; color: white; border: 1px solid #555; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+    </style>
 </head>
 <body>
+    <div id="gctrls">
+        <button class="fbtn" onclick="sim.alpha(1).restart()">Wake Up Physics</button>
+    </div>
+    <div id="gw"><svg id="gsvg"></svg></div>
 
-<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">AI news topic co-occurrence network — interactive force-directed graph</h2>
+    <script>
+        const NODES = [
+            {id:"innovation",label:"Innovation",freq:2100,s:"positive"},
+            {id:"chatbots",label:"Chatbots",freq:1920,s:"positive"},
+            {id:"job-loss",label:"Job Loss",freq:1850,s:"negative"},
+            {id:"regulation",label:"Regulation",freq:1680,s:"neutral"}
+        ];
+        const LINKS = [
+            {source:"innovation",target:"chatbots",w:800},
+            {source:"job-loss",target:"regulation",w:500}
+        ];
 
-<div id="gw">
-  <svg id="gsvg"></svg>
-  <div id="gtip"></div>
-  <div id="gstats">
-    <div class="gstat"><b>10,500</b> articles &middot; <b>20</b> topics</div>
-    <div class="gstat"><b>30</b> co-occurrence edges
+        const W = window.innerWidth, H = window.innerHeight;
+        const svg = d3.select("#gsvg").attr("width", W).attr("height", H);
+        const g = svg.append("g");
+
+        const sim = d3.forceSimulation(NODES)
+            .force("link", d3.forceLink(LINKS).id(d => d.id).distance(150))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(W / 2, H / 2));
+
+        const lnk = g.selectAll("line").data(LINKS).enter().append("line").attr("class", "glink");
+        
+        const nd = g.selectAll(".nd").data(NODES).enter().append("g").attr("class", "nd")
+            .call(d3.drag()
+                .on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+                .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+                .on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+        nd.append("circle").attr("r", 20).attr("fill", d => d.s === "positive" ? "var(--c-pos)" : "var(--c-neg)");
+        nd.append("text").attr("dy", 30).text(d => d.label);
+
+        sim.on("tick", () => {
+            lnk.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+               .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+            nd.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+    </script>
+</body>
+</html>
