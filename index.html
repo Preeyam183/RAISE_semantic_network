@@ -1,6 +1,9 @@
-
-<!-- saved from url=(0134)file:///Users/preeyam/Library/Messages/Attachments/99/09/3887A2DA-C864-4546-AC9D-C942F09A9362/ai_topic_cooccurrence_network%20(1).html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  /* Base Colors and Theme */
   :root {
     --c-pos: #97C459; --c-neg: #F09595; --c-neu: #EF9F27;
     --color-background-primary: #1a1a1a;
@@ -16,214 +19,35 @@
     --border-radius-md: 6px;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  body, html { background: #111111; margin: 0; padding: 0; }
+  body, html { background: #111111; margin: 0; padding: 0; color: var(--color-text-primary); font-family: var(--font-sans); }
+  
+  /* Container Layout */
   #gw { position: relative; width: 100%; height: 560px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; background: var(--color-background-secondary); }
   #gsvg { width: 100%; height: 100%; }
-  .glink { fill: none; }
-  .gnlabel { pointer-events: none; font-family: var(--font-sans); }
-  #gtip { position: absolute; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 12px; line-height: 1.6; pointer-events: none; display: none; max-width: 210px; z-index: 10; }
+  .glink { fill: none; pointer-events: none; }
+  .gnlabel { pointer-events: none; font-family: var(--font-sans); font-weight: 500; }
+  
+  /* UI Elements */
+  #gtip { position: absolute; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 12px; line-height: 1.6; pointer-events: none; display: none; max-width: 210px; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
   #gctrls { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
-  #glgd { position: absolute; bottom: 12px; left: 12px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.8; }
+  #glgd { position: absolute; bottom: 12px; left: 12px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.8; pointer-events: none; }
   .ld { display: flex; align-items: center; gap: 5px; }
   .ldd { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .fbtn { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
   .fbtn.act { background: var(--color-background-tertiary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
-  #gstats { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 4px; }
+  #gstats { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 4px; pointer-events: none; }
   .gstat { font-size: 10px; color: var(--color-text-tertiary); line-height: 1.4; }
   .gstat b { color: var(--color-text-secondary); font-weight: 500; }
-  #ghint { position: absolute; bottom: 12px; right: 12px; font-size: 10px; color: var(--color-text-tertiary); text-align: right; }
+  #ghint { position: absolute; bottom: 12px; right: 12px; font-size: 10px; color: var(--color-text-tertiary); text-align: right; pointer-events: none; }
 </style>
+</head>
+<body>
 
-</head><body><h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">AI news topic co-occurrence network — interactive force-directed graph from RAISE-26 analysis</h2>
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">AI news topic co-occurrence network — interactive force-directed graph</h2>
 
 <div id="gw">
-  <svg id="gsvg" width="1470" height="560"><g><g><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.918478260869565" stroke-opacity="0.5263043478260869" x1="718.7378756472153" y1="245.04036055589637" x2="600.2035556148472" y2="279.4179863491774"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="3" stroke-opacity="0.54" x1="649.8534204614288" y1="124.65684955850988" x2="648.2266952274584" y2="225.68439693020866"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.782608695652174" stroke-opacity="0.5034782608695652" x1="811.6254975437755" y1="317.234863746817" x2="791.4777273407212" y2="416.5464798819892"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.7010869565217392" stroke-opacity="0.48978260869565216" x1="648.2266952274584" y1="225.68439693020866" x2="542.6148192898711" y2="186.9098178812155"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.3478260869565215" stroke-opacity="0.4304347826086956" x1="791.4777273407212" y1="416.5464798819892" x2="947.6578637147346" y2="440.6389455473895"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.5108695652173916" stroke-opacity="0.4578260869565217" x1="649.8534204614288" y1="124.65684955850988" x2="513.3886142889913" y2="242.81381636830386"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.3478260869565215" stroke-opacity="0.4304347826086956" x1="649.8534204614288" y1="124.65684955850988" x2="783.3779736232303" y2="155.81519151049133"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.4293478260869565" stroke-opacity="0.44413043478260866" x1="718.7378756472153" y1="245.04036055589637" x2="685.9496063104544" y2="411.43130923283576"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.266304347826087" stroke-opacity="0.4167391304347826" x1="811.6254975437755" y1="317.234863746817" x2="961.824553738125" y2="247.96702259992418"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.266304347826087" stroke-opacity="0.4167391304347826" x1="648.2266952274584" y1="225.68439693020866" x2="513.3886142889913" y2="242.81381636830386"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.157608695652174" stroke-opacity="0.39847826086956517" x1="718.7378756472153" y1="245.04036055589637" x2="751.0874248219184" y2="68.24746533570972"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.2391304347826084" stroke-opacity="0.4121739130434782" x1="600.2035556148472" y1="279.4179863491774" x2="609.1555058502839" y2="437.4340033065802"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.1847826086956523" stroke-opacity="0.40304347826086956" x1="480.32897601178786" y1="96.94566042956123" x2="513.3886142889913" y2="242.81381636830386"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.1847826086956523" stroke-opacity="0.40304347826086956" x1="718.7378756472153" y1="245.04036055589637" x2="876.2436288058589" y2="217.59685591215907"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.0760869565217392" stroke-opacity="0.3847826086956522" x1="811.6254975437755" y1="317.234863746817" x2="897.5517598708848" y2="456.67212239582494"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.0760869565217392" stroke-opacity="0.3847826086956522" x1="751.0874248219184" y1="68.24746533570972" x2="876.2436288058589" y2="217.59685591215907"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="2.1032608695652173" stroke-opacity="0.3893478260869565" x1="718.7378756472153" y1="245.04036055589637" x2="804.4643161319615" y2="93.45612378631655"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.6956521739130435" stroke-opacity="0.3208695652173913" x1="811.6254975437755" y1="317.234863746817" x2="609.1555058502839" y2="437.4340033065802"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.9130434782608694" stroke-opacity="0.35739130434782607" x1="791.4777273407212" y1="416.5464798819892" x2="876.2436288058589" y2="217.59685591215907"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.9130434782608694" stroke-opacity="0.35739130434782607" x1="600.2035556148472" y1="279.4179863491774" x2="685.9496063104544" y2="411.43130923283576"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.9130434782608694" stroke-opacity="0.35739130434782607" x1="811.6254975437755" y1="317.234863746817" x2="947.6578637147346" y2="440.6389455473895"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.9945652173913042" stroke-opacity="0.3710869565217391" x1="649.8534204614288" y1="124.65684955850988" x2="804.4643161319615" y2="93.45612378631655"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.8315217391304348" stroke-opacity="0.34369565217391307" x1="649.8534204614288" y1="124.65684955850988" x2="542.6148192898711" y2="186.9098178812155"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.8043478260869565" stroke-opacity="0.3391304347826087" x1="718.7378756472153" y1="245.04036055589637" x2="879.6293445226519" y2="373.1173875313472"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.8043478260869565" stroke-opacity="0.3391304347826087" x1="897.5517598708848" y1="456.67212239582494" x2="961.824553738125" y2="247.96702259992418"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.8043478260869565" stroke-opacity="0.3391304347826087" x1="648.2266952274584" y1="225.68439693020866" x2="685.9496063104544" y2="411.43130923283576"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.6141304347826086" stroke-opacity="0.30717391304347824" x1="783.3779736232303" y1="155.81519151049133" x2="542.6148192898711" y2="186.9098178812155"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.6141304347826086" stroke-opacity="0.30717391304347824" x1="480.32897601178786" y1="96.94566042956123" x2="648.2266952274584" y2="225.68439693020866"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.5326086956521738" stroke-opacity="0.2934782608695652" x1="804.4643161319615" y1="93.45612378631655" x2="542.6148192898711" y2="186.9098178812155"></line><line class="glink" stroke="var(--color-border-primary)" stroke-width="1.3695652173913042" stroke-opacity="0.2660869565217391" x1="746.5960363077111" y1="562.3342016768677" x2="811.6254975437755" y2="317.234863746817"></line></g><g><g class="nd" transform="translate(811.6254975437755,317.234863746817)"><circle r="22" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="33" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">Innovation &amp; Research</text></g><g class="nd" transform="translate(791.4777273407212,416.5464798819892)"><circle r="20.824622497390415" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="31.824622497390415" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">Chatbots &amp; LLMs</text></g><g class="nd" transform="translate(718.7378756472153,245.04036055589637)"><circle r="20.352716978112277" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="31.352716978112277" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">Job Displacement</text></g><g class="nd" transform="translate(648.2266952274584,225.68439693020866)"><circle r="19.168049252583643" fill="var(--c-neu)" fill-opacity="0.82" stroke="var(--c-neu)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="30.168049252583643" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">AI Regulation</text></g><g class="nd" transform="translate(600.2035556148472,279.4179863491774)"><circle r="18.516542769994928" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="29.516542769994928" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">Automation</text></g><g class="nd" transform="translate(876.2436288058589,217.59685591215907)"><circle r="17.23347965752521" fill="var(--c-neu)" fill-opacity="0.82" stroke="var(--c-neu)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="28.23347965752521" text-anchor="middle" font-size="11px" fill="var(--color-text-secondary)" fill-opacity="0.9">Education &amp; Learning</text></g><g class="nd" transform="translate(685.9496063104544,411.43130923283576)"><circle r="16.920582924188054" fill="var(--c-neu)" fill-opacity="0.82" stroke="var(--c-neu)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="27.920582924188054" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.9">Finance &amp; Economy</text></g><g class="nd" transform="translate(649.8534204614288,124.65684955850988)"><circle r="15.788074253677326" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="26.788074253677326" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.9">Ethics &amp; Bias</text></g><g class="nd" transform="translate(947.6578637147346,440.6389455473895)"><circle r="15.28319686663827" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="26.28319686663827" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.55">Productivity Tools</text></g><g class="nd" transform="translate(513.3886142889913,242.81381636830386)"><circle r="14.765311953784646" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="25.765311953784646" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.55">Privacy &amp; Data</text></g><g class="nd" transform="translate(804.4643161319615,93.45612378631655)"><circle r="14.14324997328357" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="25.14324997328357" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.55">Social Impact</text></g><g class="nd" transform="translate(897.5517598708848,456.67212239582494)"><circle r="13.500083239023708" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="24.50008323902371" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.55">Healthcare AI</text></g><g class="nd" transform="translate(542.6148192898711,186.9098178812155)"><circle r="13.217423019640984" fill="var(--c-neu)" fill-opacity="0.82" stroke="var(--c-neu)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="24.217423019640982" text-anchor="middle" font-size="10px" fill="var(--color-text-secondary)" fill-opacity="0.55">Government &amp; Politics</text></g><g class="nd" transform="translate(783.3779736232303,155.81519151049133)"><circle r="12.638382360410011" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="23.638382360410013" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">AGI &amp; Safety</text></g><g class="nd" transform="translate(609.1555058502839,437.4340033065802)"><circle r="12.140758395799152" fill="var(--c-neu)" fill-opacity="0.82" stroke="var(--c-neu)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="23.140758395799153" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Robotics</text></g><g class="nd" transform="translate(751.0874248219184,68.24746533570972)"><circle r="12.03947163447714" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="23.039471634477138" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Workforce Training</text></g><g class="nd" transform="translate(879.6293445226519,373.1173875313472)"><circle r="11.312673594300604" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="22.312673594300605" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Creative Industries</text></g><g class="nd" transform="translate(480.32897601178786,96.94566042956123)"><circle r="10.88226813382169" fill="var(--c-neg)" fill-opacity="0.82" stroke="var(--c-neg)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="21.88226813382169" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Cybersecurity</text></g><g class="nd" transform="translate(961.824553738125,247.96702259992418)"><circle r="10.439731450641938" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="21.439731450641936" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Scientific Discovery</text></g><g class="nd" transform="translate(746.5960363077111,548)"><circle r="8" fill="var(--c-pos)" fill-opacity="0.82" stroke="var(--c-pos)" stroke-width="1" stroke-opacity="0.5" style="cursor: pointer;"></circle><text class="gnlabel" dy="19" text-anchor="middle" font-size="9px" fill="var(--color-text-secondary)" fill-opacity="0.55">Climate &amp; Environment</text></g></g></g></svg>
+  <svg id="gsvg"></svg>
   <div id="gtip"></div>
   <div id="gstats">
-    <div class="gstat"><b>10,500</b> articles · <b>20</b> topics</div>
-    <div class="gstat"><b>30</b> co-occurrence edges</div>
-  </div>
-  <div id="gctrls">
-    <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:1px">filter sentiment</div>
-    <button class="fbtn act" onclick="doFilter(&#39;all&#39;,this)">All</button>
-    <button class="fbtn" onclick="doFilter(&#39;positive&#39;,this)" style="color:var(--c-pos)">Positive</button>
-    <button class="fbtn" onclick="doFilter(&#39;negative&#39;,this)" style="color:var(--c-neg)">Negative</button>
-    <button class="fbtn" onclick="doFilter(&#39;neutral&#39;,this)" style="color:var(--c-neu)">Neutral</button>
-    <button class="fbtn" style="margin-top:4px" onclick="resetZoom()">Reset view</button>
-  </div>
-  <div id="glgd">
-    <div style="font-size:11px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">Majority sentiment</div>
-    <div class="ld"><div class="ldd" style="background:var(--c-pos)"></div>Positive</div>
-    <div class="ld"><div class="ldd" style="background:var(--c-neg)"></div>Negative</div>
-    <div class="ld"><div class="ldd" style="background:var(--c-neu)"></div>Neutral</div>
-    <div style="margin-top:7px;color:var(--color-text-tertiary);font-size:10px;line-height:1.6">Node size = article frequency<br>Edge = co-occurrence strength<br>Closer = more likely together</div>
-  </div>
-  <div id="ghint">Drag · scroll to zoom</div>
-</div>
-
-<script src="./ai_topic_cooccurrence_network (better)_files/d3.min.js"></script>
-<script>
-const NODES = [
-  {id:"innovation",label:"Innovation & Research",freq:2100,s:"positive",sc:0.72,em:"admiration, excitement"},
-  {id:"chatbots",label:"Chatbots & LLMs",freq:1920,s:"positive",sc:0.48,em:"admiration, excitement"},
-  {id:"job-loss",label:"Job Displacement",freq:1850,s:"negative",sc:-0.42,em:"concern, fear"},
-  {id:"regulation",label:"AI Regulation",freq:1680,s:"neutral",sc:-0.05,em:"anticipation, concern"},
-  {id:"automation",label:"Automation",freq:1590,s:"negative",sc:-0.31,em:"fear, concern"},
-  {id:"education",label:"Education & Learning",freq:1420,s:"neutral",sc:0.08,em:"anticipation, curiosity"},
-  {id:"finance",label:"Finance & Economy",freq:1380,s:"neutral",sc:0.02,em:"anticipation, neutral"},
-  {id:"ethics",label:"Ethics & Bias",freq:1240,s:"negative",sc:-0.38,em:"disapproval, concern"},
-  {id:"productivity",label:"Productivity Tools",freq:1180,s:"positive",sc:0.53,em:"admiration, optimism"},
-  {id:"privacy",label:"Privacy & Data",freq:1120,s:"negative",sc:-0.29,em:"disapproval, concern"},
-  {id:"social",label:"Social Impact",freq:1050,s:"negative",sc:-0.22,em:"concern, curiosity"},
-  {id:"healthcare",label:"Healthcare AI",freq:980,s:"positive",sc:0.61,em:"optimism, admiration"},
-  {id:"government",label:"Government & Politics",freq:950,s:"neutral",sc:-0.08,em:"neutral, anticipation"},
-  {id:"agi",label:"AGI & Safety",freq:890,s:"negative",sc:-0.55,em:"fear, nervousness"},
-  {id:"robotics",label:"Robotics",freq:840,s:"neutral",sc:0.11,em:"curiosity, admiration"},
-  {id:"wf-training",label:"Workforce Training",freq:830,s:"positive",sc:0.38,em:"optimism, anticipation"},
-  {id:"creatives",label:"Creative Industries",freq:760,s:"negative",sc:-0.44,em:"grief, concern"},
-  {id:"cybersec",label:"Cybersecurity",freq:720,s:"negative",sc:-0.35,em:"concern, fear"},
-  {id:"sci-disco",label:"Scientific Discovery",freq:680,s:"positive",sc:0.67,em:"admiration, surprise"},
-  {id:"climate",label:"Climate & Environment",freq:480,s:"positive",sc:0.41,em:"optimism, admiration"},
-];
-
-const LINKS = [
-  {source:"job-loss",target:"automation",w:890},
-  {source:"ethics",target:"regulation",w:920},
-  {source:"innovation",target:"chatbots",w:840},
-  {source:"regulation",target:"government",w:810},
-  {source:"chatbots",target:"productivity",w:680},
-  {source:"ethics",target:"privacy",w:740},
-  {source:"ethics",target:"agi",w:680},
-  {source:"job-loss",target:"finance",w:710},
-  {source:"innovation",target:"sci-disco",w:650},
-  {source:"regulation",target:"privacy",w:650},
-  {source:"job-loss",target:"wf-training",w:610},
-  {source:"automation",target:"robotics",w:640},
-  {source:"cybersec",target:"privacy",w:620},
-  {source:"job-loss",target:"education",w:620},
-  {source:"innovation",target:"healthcare",w:580},
-  {source:"wf-training",target:"education",w:580},
-  {source:"job-loss",target:"social",w:590},
-  {source:"innovation",target:"robotics",w:440},
-  {source:"chatbots",target:"education",w:520},
-  {source:"automation",target:"finance",w:520},
-  {source:"innovation",target:"productivity",w:520},
-  {source:"ethics",target:"social",w:550},
-  {source:"ethics",target:"government",w:490},
-  {source:"job-loss",target:"creatives",w:480},
-  {source:"healthcare",target:"sci-disco",w:480},
-  {source:"regulation",target:"finance",w:480},
-  {source:"agi",target:"government",w:410},
-  {source:"cybersec",target:"regulation",w:410},
-  {source:"social",target:"government",w:380},
-  {source:"climate",target:"innovation",w:320},
-];
-
-const MAX_W = 920;
-const SC = d => d.s==="positive"?"var(--c-pos)":d.s==="negative"?"var(--c-neg)":"var(--c-neu)";
-const rsc = d3.scaleSqrt().domain([480,2100]).range([8,22]);
-
-const wrap = document.getElementById("gw");
-let W = wrap.clientWidth||700, H=560;
-const svg = d3.select("#gsvg").attr("width",W).attr("height",H);
-const zoomBeh = d3.zoom().scaleExtent([0.3,4]).on("zoom",e=>g.attr("transform",e.transform));
-svg.call(zoomBeh);
-const g = svg.append("g");
-
-function resetZoom(){svg.transition().duration(400).call(zoomBeh.transform,d3.zoomIdentity.translate(0,0).scale(1));}
-
-const sim = d3.forceSimulation(NODES)
-  .force("link",d3.forceLink(LINKS).id(d=>d.id)
-    .distance(d=>280-(d.w/MAX_W)*190)
-    .strength(d=>0.25+(d.w/MAX_W)*0.55))
-  .force("charge",d3.forceManyBody().strength(d=>-rsc(d.freq)*20))
-  .force("center",d3.forceCenter(W/2,H/2))
-  .force("collision",d3.forceCollide().radius(d=>rsc(d.freq)+10));
-
-const lnk = g.append("g").selectAll("line").data(LINKS).join("line")
-  .attr("class","glink")
-  .attr("stroke","var(--color-border-primary)")
-  .attr("stroke-width",d=>0.5+(d.w/MAX_W)*2.5)
-  .attr("stroke-opacity",d=>0.12+(d.w/MAX_W)*0.42);
-
-const nd = g.append("g").selectAll("g").data(NODES).join("g")
-  .attr("class","nd")
-  .call(d3.drag()
-    .on("start",(e,d)=>{if(!e.active)sim.alphaTarget(0.3).restart();d.fx=d.x;d.fy=d.y;})
-    .on("drag",(e,d)=>{d.fx=e.x;d.fy=e.y;})
-    .on("end",(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}));
-
-nd.append("circle")
-  .attr("r",d=>rsc(d.freq))
-  .attr("fill",d=>SC(d))
-  .attr("fill-opacity",0.82)
-  .attr("stroke",d=>SC(d))
-  .attr("stroke-width",1)
-  .attr("stroke-opacity",0.5)
-  .style("cursor","pointer");
-
-nd.append("text")
-  .attr("class","gnlabel")
-  .attr("dy",d=>rsc(d.freq)+11)
-  .attr("text-anchor","middle")
-  .attr("font-size",d=>Math.max(9,d.freq>1400?11:d.freq>900?10:9)+"px")
-  .attr("fill","var(--color-text-secondary)")
-  .attr("fill-opacity",d=>d.freq>1200?0.9:0.55)
-  .text(d=>d.label);
-
-const tip = document.getElementById("gtip");
-
-nd.on("mouseover",function(e,d){
-  const connIds=new Set(LINKS.filter(l=>l.source.id===d.id||l.target.id===d.id).flatMap(l=>[l.source.id,l.target.id]));
-  connIds.add(d.id);
-  lnk.attr("stroke-opacity",l=>(l.source.id===d.id||l.target.id===d.id)?0.85:0.03)
-      .attr("stroke-width",l=>(l.source.id===d.id||l.target.id===d.id)?Math.max(1.5,0.5+(l.w/MAX_W)*2.5):0.5);
-  nd.select("circle").attr("fill-opacity",n=>connIds.has(n.id)?0.95:0.12);
-  nd.select("text").attr("fill-opacity",n=>connIds.has(n.id)?0.95:0.12);
-  const peers=LINKS.filter(l=>l.source.id===d.id||l.target.id===d.id)
-    .sort((a,b)=>b.w-a.w).slice(0,5)
-    .map(l=>{const o=l.source.id===d.id?l.target:l.source;
-      return `<div style="display:flex;justify-content:space-between;gap:8px"><span style="color:var(--color-text-secondary)">${o.label}</span><span style="color:var(--color-text-tertiary);font-size:10px;white-space:nowrap">${l.w} co-occ</span></div>`;
-    }).join("");
-  const sv=d.sc>0?"+"+d.sc.toFixed(2):d.sc.toFixed(2);
-  const sl={positive:"Positive",negative:"Negative",neutral:"Neutral"}[d.s];
-  tip.innerHTML=`<div style="font-weight:500;font-size:13px;color:var(--color-text-primary);margin-bottom:6px">${d.label}</div>
-<div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--color-text-secondary)">Articles</span><span style="font-weight:500">${d.freq.toLocaleString()}</span></div>
-<div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="color:var(--color-text-secondary)">Sentiment</span><span style="color:${SC(d)};font-weight:500">${sl} (${sv})</span></div>
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:var(--color-text-secondary)">Top emotions</span><span style="color:var(--color-text-tertiary);font-size:10px;text-align:right;max-width:110px">${d.em}</span></div>
-<div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:3px;font-weight:500">CO-OCCURRING TOPICS</div>${peers}`;
-  tip.style.display="block";
-  const tx=Math.min(e.offsetX+16,W-220);
-  const ty=Math.max(Math.min(e.offsetY-20,H-200),10);
-  tip.style.left=tx+"px";tip.style.top=ty+"px";
-}).on("mousemove",function(e){
-  tip.style.left=Math.min(e.offsetX+16,W-220)+"px";
-  tip.style.top=Math.max(Math.min(e.offsetY-20,H-200),10)+"px";
-}).on("mouseout",function(){
-  lnk.attr("stroke-opacity",d=>0.12+(d.w/MAX_W)*0.42)
-     .attr("stroke-width",d=>0.5+(d.w/MAX_W)*2.5);
-  nd.select("circle").attr("fill-opacity",0.82);
-  nd.select("text").attr("fill-opacity",d=>d.freq>1200?0.9:0.55);
-  tip.style.display="none";
-});
-
-sim.on("tick",()=>{
-  lnk.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y)
-     .attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
-  nd.attr("transform",d=>`translate(${Math.max(rsc(d.freq)+4,Math.min(W-rsc(d.freq)-4,d.x))},${Math.max(rsc(d.freq)+4,Math.min(H-rsc(d.freq)-4,d.y))})`);
-});
-
-function doFilter(f,btn){
-  document.querySelectorAll(".fbtn").forEach(b=>b.classList.remove("act"));
-  btn.classList.add("act");
-  nd.attr("opacity",d=>f==="all"||d.s===f?1:0.1);
-  lnk.attr("opacity",d=>f==="all"||(d.source.s===f||d.target.s===f)?1:0.04);
-}
-
-new ResizeObserver(()=>{
-  W=wrap.clientWidth;
-  svg.attr("width",W);
-  sim.force("center",d3.forceCenter(W/2,H/2)).alpha(0.15).restart();
-}).observe(wrap);
-</script>
-</body></html>
+    <div class="gstat"><b>10,500</b> articles &middot; <b>20</b> topics</div>
+    <div class="gstat"><b>30</b> co-occurrence edges
