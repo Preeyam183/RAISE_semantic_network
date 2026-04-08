@@ -22,10 +22,10 @@
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   body, html { background: #111111; margin: 0; padding: 0; color: var(--color-text-primary); font-family: var(--font-sans); overflow: hidden; }
-  #gw { position: relative; width: 100vw; height: 100vh; overflow: hidden; background: var(--color-background-secondary); }
+  #gw { position: relative; width: 100vw; height: 100vh; background: var(--color-background-secondary); }
   #gsvg { width: 100%; height: 100%; }
-  .glink { fill: none; pointer-events: none; stroke: var(--color-border-primary); }
-  .gnlabel { pointer-events: none; font-family: var(--font-sans); font-weight: 500; fill: var(--color-text-secondary); }
+  .glink { fill: none; pointer-events: none; }
+  .gnlabel { pointer-events: none; font-family: var(--font-sans); }
   #gtip { position: absolute; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 10px 13px; font-size: 12px; line-height: 1.6; pointer-events: none; display: none; max-width: 210px; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
   #gctrls { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
   .fbtn { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
@@ -47,26 +47,26 @@
 
 <script>
 const NODES = [
-  {id:"innovation",label:"Innovation & Research",freq:2100,s:"positive",sc:0.72,em:"admiration"},
-  {id:"chatbots",label:"Chatbots & LLMs",freq:1920,s:"positive",sc:0.48,em:"excitement"},
-  {id:"job-loss",label:"Job Displacement",freq:1850,s:"negative",sc:-0.42,em:"fear"},
-  {id:"regulation",label:"AI Regulation",freq:1680,s:"neutral",sc:-0.05,em:"anticipation"},
-  {id:"automation",label:"Automation",freq:1590,s:"negative",sc:-0.31,em:"concern"},
-  {id:"education",label:"Education & Learning",freq:1420,s:"neutral",sc:0.08,em:"curiosity"},
-  {id:"finance",label:"Finance & Economy",freq:1380,s:"neutral",sc:0.02,em:"neutral"},
-  {id:"ethics",label:"Ethics & Bias",freq:1240,s:"negative",sc:-0.38,em:"disapproval"},
-  {id:"productivity",label:"Productivity Tools",freq:1180,s:"positive",sc:0.53,em:"optimism"},
-  {id:"privacy",label:"Privacy & Data",freq:1120,s:"negative",sc:-0.29,em:"concern"},
-  {id:"social",label:"Social Impact",freq:1050,s:"negative",sc:-0.22,em:"curiosity"},
-  {id:"healthcare",label:"Healthcare AI",freq:980,s:"positive",sc:0.61,em:"optimism"},
-  {id:"government",label:"Government & Politics",freq:950,s:"neutral",sc:-0.08,em:"anticipation"},
-  {id:"agi",label:"AGI & Safety",freq:890,s:"negative",sc:-0.55,em:"fear"},
-  {id:"robotics",label:"Robotics",freq:840,s:"neutral",sc:0.11,em:"curiosity"},
-  {id:"wf-training",label:"Workforce Training",freq:830,s:"positive",sc:0.38,em:"anticipation"},
-  {id:"creatives",label:"Creative Industries",freq:760,s:"negative",sc:-0.44,em:"grief"},
-  {id:"cybersec",label:"Cybersecurity",freq:720,s:"negative",sc:-0.35,em:"fear"},
-  {id:"sci-disco",label:"Scientific Discovery",freq:680,s:"positive",sc:0.67,em:"admiration"},
-  {id:"climate",label:"Climate & Environment",freq:480,s:"positive",sc:0.41,em:"optimism"}
+  {id:"innovation",label:"Innovation & Research",freq:2100,s:"positive",sc:0.72,em:"admiration, excitement"},
+  {id:"chatbots",label:"Chatbots & LLMs",freq:1920,s:"positive",sc:0.48,em:"admiration, excitement"},
+  {id:"job-loss",label:"Job Displacement",freq:1850,s:"negative",sc:-0.42,em:"concern, fear"},
+  {id:"regulation",label:"AI Regulation",freq:1680,s:"neutral",sc:-0.05,em:"anticipation, concern"},
+  {id:"automation",label:"Automation",freq:1590,s:"negative",sc:-0.31,em:"fear, concern"},
+  {id:"education",label:"Education & Learning",freq:1420,s:"neutral",sc:0.08,em:"anticipation, curiosity"},
+  {id:"finance",label:"Finance & Economy",freq:1380,s:"neutral",sc:0.02,em:"anticipation, neutral"},
+  {id:"ethics",label:"Ethics & Bias",freq:1240,s:"negative",sc:-0.38,em:"disapproval, concern"},
+  {id:"productivity",label:"Productivity Tools",freq:1180,s:"positive",sc:0.53,em:"admiration, optimism"},
+  {id:"privacy",label:"Privacy & Data",freq:1120,s:"negative",sc:-0.29,em:"disapproval, concern"},
+  {id:"social",label:"Social Impact",freq:1050,s:"negative",sc:-0.22,em:"concern, curiosity"},
+  {id:"healthcare",label:"Healthcare AI",freq:980,s:"positive",sc:0.61,em:"optimism, admiration"},
+  {id:"government",label:"Government & Politics",freq:950,s:"neutral",sc:-0.08,em:"neutral, anticipation"},
+  {id:"agi",label:"AGI & Safety",freq:890,s:"negative",sc:-0.55,em:"fear, nervousness"},
+  {id:"robotics",label:"Robotics",freq:840,s:"neutral",sc:0.11,em:"curiosity, admiration"},
+  {id:"wf-training",label:"Workforce Training",freq:830,s:"positive",sc:0.38,em:"optimism, anticipation"},
+  {id:"creatives",label:"Creative Industries",freq:760,s:"negative",sc:-0.44,em:"grief, concern"},
+  {id:"cybersec",label:"Cybersecurity",freq:720,s:"negative",sc:-0.35,em:"concern, fear"},
+  {id:"sci-disco",label:"Scientific Discovery",freq:680,s:"positive",sc:0.67,em:"admiration, surprise"},
+  {id:"climate",label:"Climate & Environment",freq:480,s:"positive",sc:0.41,em:"optimism, admiration"}
 ];
 
 const LINKS = [
@@ -87,30 +87,74 @@ const LINKS = [
   {source:"social",target:"government",w:380},{source:"climate",target:"innovation",w:320}
 ];
 
+const MAX_W = 920;
 const SC = d => d.s==="positive"?"var(--c-pos)":d.s==="negative"?"var(--c-neg)":"var(--c-neu)";
 const rsc = d3.scaleSqrt().domain([480,2100]).range([8,22]);
 
 let W = window.innerWidth, H = window.innerHeight;
 const svg = d3.select("#gsvg").attr("viewBox", [0, 0, W, H]);
 const g = svg.append("g");
+const tip = document.getElementById("gtip");
 
 const sim = d3.forceSimulation(NODES)
-  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(100))
-  .force("charge", d3.forceManyBody().strength(-250))
+  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(120))
+  .force("charge", d3.forceManyBody().strength(-300))
   .force("center", d3.forceCenter(W / 2, H / 2))
-  .force("collision", d3.forceCollide().radius(d => rsc(d.freq) + 10));
+  .force("collision", d3.forceCollide().radius(d => rsc(d.freq) + 12));
 
 const lnk = g.append("g").selectAll("line").data(LINKS).join("line")
-  .attr("class", "glink").attr("stroke-width", d => 0.5 + (d.w / 920) * 2.5).attr("stroke-opacity", 0.3);
+  .attr("class", "glink")
+  .attr("stroke", "var(--color-border-primary)")
+  .attr("stroke-width", d => 0.5 + (d.w / MAX_W) * 2.5)
+  .attr("stroke-opacity", 0.3);
 
 const nd = g.append("g").selectAll("g").data(NODES).join("g")
+  .attr("class", "nd")
   .call(d3.drag()
     .on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
     .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
     .on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
 
-nd.append("circle").attr("r", d => rsc(d.freq)).attr("fill", d => SC(d)).attr("fill-opacity", 0.8);
-nd.append("text").attr("class", "gnlabel").attr("dy", d => rsc(d.freq) + 15).attr("text-anchor", "middle").text(d => d.label);
+nd.append("circle")
+  .attr("r", d => rsc(d.freq))
+  .attr("fill", d => SC(d))
+  .attr("fill-opacity", 0.8)
+  .style("cursor", "pointer");
+
+nd.append("text")
+  .attr("class", "gnlabel")
+  .attr("dy", d => rsc(d.freq) + 15)
+  .attr("text-anchor", "middle")
+  .attr("font-size", "11px")
+  .attr("fill", "var(--color-text-secondary)")
+  .text(d => d.label);
+
+// --- RESTORED INTERACTIVITY ---
+nd.on("mouseover", function(e, d) {
+  const connIds = new Set(LINKS.filter(l => l.source.id === d.id || l.target.id === d.id).flatMap(l => [l.source.id, l.target.id]));
+  connIds.add(d.id);
+  
+  lnk.attr("stroke-opacity", l => (l.source.id === d.id || l.target.id === d.id) ? 0.85 : 0.03);
+  nd.select("circle").attr("fill-opacity", n => connIds.has(n.id) ? 0.95 : 0.12);
+  nd.select("text").attr("fill-opacity", n => connIds.has(n.id) ? 0.95 : 0.12);
+
+  const sv = d.sc > 0 ? "+" + d.sc.toFixed(2) : d.sc.toFixed(2);
+  tip.innerHTML = `<div style="font-weight:600;color:var(--color-text-primary)">${d.label}</div>
+                   <div style="font-size:11px;color:var(--color-text-secondary)">Articles: ${d.freq.toLocaleString()}</div>
+                   <div style="font-size:11px;color:${SC(d)}">Sentiment: ${sv}</div>
+                   <div style="font-size:10px;color:var(--color-text-tertiary);margin-top:4px">Emotions: ${d.em}</div>`;
+  tip.style.display = "block";
+})
+.on("mousemove", (e) => {
+  tip.style.left = (e.pageX + 15) + "px";
+  tip.style.top = (e.pageY - 20) + "px";
+})
+.on("mouseout", () => {
+  lnk.attr("stroke-opacity", 0.3);
+  nd.select("circle").attr("fill-opacity", 0.8);
+  nd.select("text").attr("fill-opacity", 1);
+  tip.style.display = "none";
+});
 
 sim.on("tick", () => {
   lnk.attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y);
